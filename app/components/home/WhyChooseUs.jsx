@@ -109,7 +109,7 @@ export default function WhyChooseUs() {
               </h4>
 
               <h2 className="mb-4 text-3xl lg:text-4xl font-bold leading-tight text-[#1C1C1C]">
-                Why RoamingRealm is <br /> Unique
+                Why 365Roam is <br /> Unique
               </h2>
 
               <p className="max-w-md text-base leading-relaxed text-gray-600">

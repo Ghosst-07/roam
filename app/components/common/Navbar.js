@@ -47,14 +47,14 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative flex items-center justify-center w-8 h-8">
               <span className="text-2xl font-bold text-[#F2994A] italic">
-                R
+                365
               </span>
               <span className="absolute -top-1 -right-1 text-[#F2994A]">
                 ✨
               </span>
             </div>
             <span className="text-xl lg:text-2xl font-black tracking-tight text-[#1C1C1C] uppercase">
-              ROAMINGREALM
+              Roam
             </span>
           </Link>
 

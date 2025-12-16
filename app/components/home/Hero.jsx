@@ -53,10 +53,10 @@ export default function HeroSection() {
           {/* Left Content */}
           <div className="w-full lg:w-[45%]  text-center lg:text-left">
             <h3 className="text-[#F2994A] font-semibold tracking-wider uppercase">
-              Welcome to RoamingRealm
+              Welcome to 365Roam
             </h3>
             <h1 className="text-3xl lg:text-5xl font-bold text-[#1C1C1C] leading-tight">
-              RoamingRealm : Easy <br /> trips, lasting moments
+              365Roam : Easy <br /> trips, lasting moments
             </h1>
             <p className="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
               Personalized journeys, authentic guidance, and easy travel—created
@@ -97,9 +97,9 @@ export default function HeroSection() {
             height={30}
           />
           <p className="text-[#2f0909] font-bold italic text-[16px]">
-            &quot;Discover hassle-free travel planning with roamingrealm.com –
-            your authorized MakeMyTrip partner for flights, hotels, and
-            unforgettable holidays.&quot;
+            &quot;Discover hassle-free travel planning with 365Roam– your
+            authorized MakeMyTrip partner for flights, hotels, and unforgettable
+            holidays.&quot;
           </p>
         </div>
       </div>

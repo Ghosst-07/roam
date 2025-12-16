@@ -61,7 +61,7 @@ export default function ContactPage() {
       icon: Mail,
       content: (
         <p className="text-lg font-bold text-[#1C1C1C] break-all">
-          admin@roamingrealm.com
+          admin@365Roam.com
         </p>
       ),
     },

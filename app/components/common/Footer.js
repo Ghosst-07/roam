@@ -38,11 +38,11 @@ export default function Footer() {
             <div className="flex items-center gap-2 font-bold text-2xl text-[#1C1C1C]">
               {/* Replace src with your actual logo file */}
               <div className="text-[#F2994A]">R</div>
-              <span>ROAMINGREALM</span>
+              <span>365Roam</span>
             </div>
 
             <p className="text-gray-600 font-medium">
-              Explore our tour packages with RoamingRealm.
+              Explore our tour packages with 365Roam.
             </p>
 
             {/* Hot Air Balloon Illustration */}
@@ -88,22 +88,25 @@ export default function Footer() {
             </h3>
             <ul className="space-y-4">
               {[
-                "About",
-                "Contact",
-                "Privacy Policy",
-                "Terms of Service",
-                "Refund and Cancellation",
+                { name: "About", href: "/about" },
+                { name: "Contact", href: "/contact" },
+                { name: "Privacy Policy", href: "/privacy-policy" },
+                { name: "Terms of Service", href: "/terms-of-service" },
+                {
+                  name: "Refund and Cancellation",
+                  href: "/refund-cancellation",
+                },
               ].map((item) => (
-                <li key={item}>
+                <li key={item.name}>
                   <Link
-                    href="#"
+                    href={item.href}
                     className="group flex items-center text-gray-600 hover:text-[#F2994A] transition-colors font-medium"
                   >
                     <ArrowUpRight
                       size={18}
                       className="mr-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                     />
-                    {item}
+                    {item.name}
                   </Link>
                 </li>
               ))}

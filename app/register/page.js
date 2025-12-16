@@ -131,7 +131,7 @@ export default function RegisterPage() {
                   </span>
                 </div>
                 <span className="text-lg font-black tracking-tight text-[#1C1C1C] uppercase">
-                  ROAMINGREALM
+                  365Roam
                 </span>
               </div>
               <h1 className="text-3xl font-bold text-[#1C1C1C] mb-2">

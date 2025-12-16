@@ -8,16 +8,16 @@ export default function AboutSection() {
     {
       title: "Discover Our Story",
       description:
-        "At RoamingRealm , we craft effortless, inspiring journeys filled with lasting memories—curated to your style with authenticity and trust.",
+        "At 365Roam, we craft effortless, inspiring journeys filled with lasting memories—curated to your style with authenticity and trust.",
     },
     {
       title: "What We Do",
       description: "Smooth support at every step—from planning to return",
     },
     {
-      title: "RoamingRealm Promise",
+      title: "365Roam Promise",
       description:
-        "RoamingRealm offers unique journeys across diverse destinations, designed for every traveler.",
+        "365Roam offers unique journeys across diverse destinations, designed for every traveler.",
     },
   ];
 
@@ -75,7 +75,7 @@ export default function AboutSection() {
               className="text-[#F2994A] text-2xl font-[Satisfy,cursive] mb-2"
               style={{ fontFamily: "var(--font-satisfy, cursive)" }}
             >
-              About RoamingRealm
+              About 365Roam
             </h3>
             <h2 className="text-4xl lg:text-5xl font-bold text-[#1C1C1C] mb-6 leading-tight">
               Tour Packages Made <br /> Simple
@@ -139,9 +139,9 @@ export default function AboutSection() {
         {/* --- MakeMyTrip Banner --- */}
         <div className="mt-24 border border-[#F2994A]/30 bg-[#FFFBF5] rounded-xl p-8 text-center max-w-4xl mx-auto shadow-sm">
           <p className="text-[#1C1C1C] font-bold italic text-sm lg:text-base mb-6">
-            “Roamingrealm.com is an authorized partner of MakeMyTrip, offering
-            you a smooth and reliable experience for booking flights, hotels,
-            and holiday packages.”
+            “365Roam.com is an authorized partner of MakeMyTrip, offering you a
+            smooth and reliable experience for booking flights, hotels, and
+            holiday packages.”
           </p>
           <div className="flex justify-center">
             <Image
