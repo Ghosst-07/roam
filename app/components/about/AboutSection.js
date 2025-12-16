@@ -112,9 +112,9 @@ export default function AboutSection() {
           {/* Right: Image & Balloon */}
           <div className="w-full lg:w-1/2 relative">
             {/* Hot Air Balloon (Floating Right) */}
-            <div className="absolute -top-10 -right-10 w-24 h-32 z-20 animate-bounce duration-[3000ms]">
+            <div className="absolute -top-10 -right-10 w-24 h-32 z-20 animate-balloon">
               <Image
-                src="https://cdn-icons-png.flaticon.com/512/2867/2867919.png" // Placeholder balloon
+                src="https://roamingrealm.com/assets/presets/default/images/shape/ballon.png" // Placeholder balloon
                 alt="Balloon"
                 width={96}
                 height={128}

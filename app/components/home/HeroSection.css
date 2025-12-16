@@ -35,3 +35,33 @@
 .airplane {
   animation: flyDiagonalRight 8s linear infinite;
 }
+
+/* Balloon floating with realistic tilting and drifting */
+@keyframes balloonFloatRealistic {
+  0% {
+    /* Start low, tilted slightly left, shifted left */
+    transform: translateY(40px) rotate(-3deg) translateX(-5px);
+  }
+  35% {
+    /* Move high, tilt right, drift right */
+    transform: translateY(-30px) rotate(4deg) translateX(8px);
+  }
+  70% {
+    /* Sink halfway down, tilt back left slightly */
+    transform: translateY(10px) rotate(-2deg) translateX(-3px);
+  }
+  100% {
+    /* Return to start position for smooth loop */
+    transform: translateY(40px) rotate(-3deg) translateX(-5px);
+  }
+}
+
+.animate-balloon {
+  /* 14s duration = slow, heavy feel
+             ease-in-out = smooth acceleration/deceleration
+             infinite = loops forever
+          */
+  animation: balloonFloatRealistic 14s ease-in-out infinite;
+  /* Ensure hardware acceleration for smoother rendering */
+  will-change: transform;
+}

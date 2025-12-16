@@ -127,14 +127,14 @@ export default function LoginPage() {
             <div className="flex items-center justify-center gap-1 mb-6">
               <div className="relative flex items-center justify-center w-6 h-6">
                 <span className="text-xl font-bold text-[#F2994A] italic">
-                  R
+                  365
                 </span>
                 <span className="absolute -top-1 -right-1 text-[#F2994A] text-xs">
                   ✨
                 </span>
               </div>
               <span className="text-lg font-black tracking-tight text-[#1C1C1C] uppercase">
-                ROAMINGREALM
+                Roam
               </span>
             </div>
 

@@ -37,7 +37,7 @@ export default function Footer() {
             {/* Logo */}
             <div className="flex items-center gap-2 font-bold text-2xl text-[#1C1C1C]">
               {/* Replace src with your actual logo file */}
-              <div className="text-[#F2994A]">R</div>
+
               <span>365Roam</span>
             </div>
 
@@ -49,11 +49,11 @@ export default function Footer() {
             <div className="relative w-32 h-40 mt-6 opacity-80">
               {/* Using a placeholder image that resembles the screenshot style */}
               <Image
-                src="https://cdn-icons-png.flaticon.com/512/2867/2867919.png"
+                src="https://roamingrealm.com/assets/presets/default/images/shape/ballon.png"
                 alt="Hot Air Balloon"
                 width={100}
                 height={120}
-                className="object-contain opacity-60 grayscale hover:grayscale-0 transition-all duration-500"
+                className="object-contain animate-balloon "
               />
             </div>
           </div>
@@ -64,17 +64,22 @@ export default function Footer() {
               Important Links
             </h3>
             <ul className="space-y-4">
-              {["Home", "Tours", "Cookie Policy"].map((item) => (
-                <li key={item}>
+              {[
+                { name: "Home", href: "/" },
+                { name: "Tours", href: "/tours" },
+                { name: "Contact", href: "/contact" },
+              ].map((item) => (
+                <li key={item.name}>
                   <Link
-                    href="#"
+                    href={item.href}
                     className="group flex items-center text-gray-600 hover:text-[#F2994A] transition-colors font-medium"
                   >
                     <ArrowUpRight
                       size={18}
                       className="mr-2 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
                     />
-                    {item}
+                    {item.name}{" "}
+                    {/* Render the name instead of the entire item */}
                   </Link>
                 </li>
               ))}

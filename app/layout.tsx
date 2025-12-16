@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  icons: "/favicon.ico",
   title: "365Roam - Explore the World with Us",
   description:
     "Discover unforgettable travel experiences with 365Roam. Explore top destinations, popular tours, and personalized itineraries. Start your adventure today!",
