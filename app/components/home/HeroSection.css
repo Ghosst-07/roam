@@ -1,0 +1,37 @@
+/* Tree slow tilt animation (unchanged) */
+@keyframes tilt {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  50% {
+    transform: rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+.tree {
+  transform-origin: bottom center;
+  animation: tilt 6s ease-in-out infinite;
+}
+
+/* Airplane drifting only to the right while going bottom to top */
+@keyframes flyDiagonalRight {
+  0% {
+    transform: translate(-2vw, 100vh);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(5vw, -10vh);
+    opacity: 1;
+  }
+}
+
+.airplane {
+  animation: flyDiagonalRight 8s linear infinite;
+}
