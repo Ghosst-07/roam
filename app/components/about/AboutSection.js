@@ -27,10 +27,10 @@ export default function AboutSection() {
       {/* Palm Tree Sketch (Bottom Right) */}
       <div className="absolute bottom-0 right-0 w-48 h-64 pointer-events-none opacity-80 z-0 hidden lg:block">
         <Image
-          src="https://roamingrealm.com/assets/img/banner/palm-tree.png"
+          src="https://roamingrealm.com/assets/presets/default/images/shape/tree5.png"
           alt=""
           fill
-          className="object-contain object-bottom-right"
+          className="object-contain object-bottom-right tree"
         />
       </div>
 
