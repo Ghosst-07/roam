@@ -2,25 +2,22 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation"; // Import this hook
-import { Menu, X, ArrowRight } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowRight, LayoutDashboard } from "lucide-react";
+import { useAuth } from "../../context/AuthContext"; // 1. Import Auth Hook
 
 export default function Navbar() {
+  const { user } = useAuth(); // 2. Get current user
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const pathname = usePathname(); // Get the current route (e.g., "/" or "/tours")
+  const pathname = usePathname();
 
-  // Handle Sticky Scroll Effect
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Define links with their actual paths
   const navLinks = [
     { name: "HOME", href: "/" },
     { name: "TOURS", href: "/tours" },
@@ -29,8 +26,6 @@ export default function Navbar() {
     { name: "CONTACT", href: "/contact" },
   ];
 
-  // Helper function to check if a link is active
-  // This ensures exact match (e.g. "/tours" matches "/tours")
   const isActive = (path) => pathname === path;
 
   return (
@@ -43,22 +38,22 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* --- Logo --- */}
+          {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative flex items-center justify-center w-8 h-8">
               <span className="text-2xl font-bold text-[#F2994A] italic">
-                365
+                R
               </span>
               <span className="absolute -top-1 -right-1 text-[#F2994A]">
                 ✨
               </span>
             </div>
             <span className="text-xl lg:text-2xl font-black tracking-tight text-[#1C1C1C] uppercase">
-              Roam
+              ROAMINGREALM
             </span>
           </Link>
 
-          {/* --- Desktop Navigation --- */}
+          {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
@@ -71,7 +66,6 @@ export default function Navbar() {
                 }`}
               >
                 {link.name}
-                {/* Active Underline - Only shows if pathname matches href */}
                 {isActive(link.href) && (
                   <span className="absolute bottom-0 left-0 w-full h-[3px] bg-[#F2994A] rounded-full"></span>
                 )}
@@ -79,23 +73,35 @@ export default function Navbar() {
             ))}
           </nav>
 
+          {/* --- AUTH BUTTONS SECTION --- */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link
-              href="/login"
-              className="px-8 py-2.5 rounded-full border-2 border-[#F2994A] text-[#F2994A] font-bold text-lg hover:bg-[#F2994A] hover:text-white transition-all duration-300"
-            >
-              Login
-            </Link>
-            <Link
-              href="/register"
-              className="px-8 py-2.5 rounded-full bg-[#F2994A] text-white font-bold text-lg hover:bg-[#e08a3d] transition-all duration-300 flex items-center gap-2 shadow-lg shadow-orange-200"
-            >
-              Register
-              <ArrowRight size={20} strokeWidth={3} />
-            </Link>
+            {user ? (
+              // 3. IF LOGGED IN: Show Dashboard Button
+              <Link href="/dashboard">
+                <button className="px-8 py-2.5 rounded-full bg-[#F2994A] text-white font-bold text-lg hover:bg-[#e08a3d] transition-all duration-300 flex items-center gap-2 shadow-lg shadow-orange-200">
+                  <LayoutDashboard size={20} />
+                  Dashboard
+                </button>
+              </Link>
+            ) : (
+              // 4. IF LOGGED OUT: Show Login/Register
+              <>
+                <Link href="/login">
+                  <button className="px-8 py-2.5 rounded-full border-2 border-[#F2994A] text-[#F2994A] font-bold text-lg hover:bg-[#F2994A] hover:text-white transition-all duration-300">
+                    Login
+                  </button>
+                </Link>
+                <Link href="/register">
+                  <button className="px-8 py-2.5 rounded-full bg-[#F2994A] text-white font-bold text-lg hover:bg-[#e08a3d] transition-all duration-300 flex items-center gap-2 shadow-lg shadow-orange-200">
+                    Register
+                    <ArrowRight size={20} strokeWidth={3} />
+                  </button>
+                </Link>
+              </>
+            )}
           </div>
 
-          {/* --- Mobile Menu Button --- */}
+          {/* Mobile Menu Button */}
           <button
             className="lg:hidden text-[#1C1C1C] p-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -104,7 +110,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* --- Mobile Menu Dropdown --- */}
+        {/* Mobile Menu Dropdown */}
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-gray-100 py-6 px-4 flex flex-col gap-4 h-screen">
             {navLinks.map((link) => (
@@ -119,13 +125,37 @@ export default function Navbar() {
                 {link.name}
               </Link>
             ))}
-            <div className="flex flex-col gap-3 mt-4">
-              <button className="w-full py-3 border-2 border-[#F2994A] text-[#F2994A] font-bold rounded-full">
-                Login
-              </button>
-              <button className="w-full py-3 bg-[#F2994A] text-white font-bold rounded-full flex justify-center items-center gap-2">
-                Register <ArrowRight size={20} />
-              </button>
+
+            <div className="flex flex-col gap-3 mt-4 border-t border-gray-100 pt-6">
+              {user ? (
+                <Link
+                  href="/dashboard"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <button className="w-full py-3 bg-[#F2994A] text-white font-bold rounded-full flex justify-center items-center gap-2">
+                    <LayoutDashboard size={20} /> Dashboard
+                  </button>
+                </Link>
+              ) : (
+                <>
+                  <Link
+                    href="/login"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <button className="w-full py-3 border-2 border-[#F2994A] text-[#F2994A] font-bold rounded-full">
+                      Login
+                    </button>
+                  </Link>
+                  <Link
+                    href="/register"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    <button className="w-full py-3 bg-[#F2994A] text-white font-bold rounded-full flex justify-center items-center gap-2">
+                      Register <ArrowRight size={20} />
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         )}

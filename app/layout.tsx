@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "../app/components/home/HeroSection.css";
-import Footer from "./components/common/Footer";
-import Navbar from "./components/common/Navbar";
+// Remove Navbar/Footer imports from here, they are now in LayoutWrapper
+import { AuthProvider } from "./context/AuthContext";
+import AuthGuard from "./components/common/AuthGurad";
+import LayoutWrapper from "./components/common/LayoutWrapper"; // 1. Import the Wrapper
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,8 +20,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   icons: "/favicon.ico",
   title: "365Roam - Explore the World with Us",
-  description:
-    "Discover unforgettable travel experiences with 365Roam. Explore top destinations, popular tours, and personalized itineraries. Start your adventure today!",
+  description: "Discover unforgettable travel experiences...",
 };
 
 export default function RootLayout({
@@ -32,9 +33,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased mt-10`}
       >
-        <Navbar />
-        {children}
-        <Footer />
+        <AuthProvider>
+          <AuthGuard>
+            {/* 2. Use LayoutWrapper to handle Navbar/Footer visibility */}
+            <LayoutWrapper>{children}</LayoutWrapper>
+          </AuthGuard>
+        </AuthProvider>
       </body>
     </html>
   );

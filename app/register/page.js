@@ -4,10 +4,17 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Eye, EyeOff, User, Building2, ChevronDown } from "lucide-react";
+// Ensure this matches your file structure. Previously we named it AuthContext.
+import { useAuth } from "../context/AuthContext";
+import { useRouter } from "next/navigation";
 import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 
 export default function RegisterPage() {
+  const { register } = useAuth();
+  const router = useRouter();
+
+  // State
   const [activeTab, setActiveTab] = useState("traveller");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -22,6 +29,7 @@ export default function RegisterPage() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  // Handlers
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData((prev) => ({
@@ -30,8 +38,10 @@ export default function RegisterPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Basic Validation
     if (!formData.agreed) {
       alert("Please agree to the Privacy Policy and Terms of Service.");
       return;
@@ -42,35 +52,51 @@ export default function RegisterPage() {
     }
 
     setIsSubmitting(true);
-    setTimeout(() => {
-      console.log("Registration Submitted:", { activeTab, ...formData });
-      alert(`Account Created Successfully as ${activeTab}!`);
+
+    try {
+      // 1. Register the user (This now also auto-saves them to session via Context)
+      await register({
+        username: formData.username,
+        email: formData.email,
+        country: formData.country,
+        mobile: formData.mobile,
+        password: formData.password,
+        role: activeTab,
+      });
+
+      alert(`Account Created! Welcome ${formData.username}`);
+
+      // 2. Redirect to HOME immediately
+      router.push("/");
+    } catch (error) {
+      alert(error.message);
+    } finally {
       setIsSubmitting(false);
-    }, 1500);
+    }
   };
 
   return (
     <main className="bg-[#FDFDFD] min-h-screen relative flex flex-col font-sans overflow-x-hidden">
-      {/* --- Background Shapes (Fixed Aspect Ratio to prevent stretching) --- */}
+      <Navbar />
+
+      {/* --- Background Shapes --- */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
-        {/* Left Pattern */}
         <div className="absolute -left-20 top-0 opacity-10">
           <Image
             src="https://roamingrealm.com/assets/presets/default/images/shape/element-10.png"
             alt="Background Pattern"
             width={600}
             height={800}
-            className="object-contain" // Ensures image doesn't stretch
+            className="object-contain"
           />
         </div>
-        {/* Right Pattern */}
         <div className="absolute -right-20 bottom-0 opacity-10">
           <Image
             src="https://roamingrealm.com/assets/presets/default/images/shape/element-9.png"
             alt="Background Pattern"
             width={600}
             height={800}
-            className="object-contain" // Ensures image doesn't stretch
+            className="object-contain"
           />
         </div>
       </div>
@@ -78,12 +104,12 @@ export default function RegisterPage() {
       {/* --- Main Content Wrapper --- */}
       <div className="flex-grow flex items-center justify-center pt-32 pb-20 px-4 relative z-10">
         {/* --- Registration Card --- */}
-        {/* Changed max-w to 2xl (approx 672px) for a wider, cleaner look like the screenshot */}
         <div className="bg-white w-full max-w-2xl rounded-[2rem] shadow-[0_10px_60px_-10px_rgba(0,0,0,0.05)] border border-gray-100 overflow-hidden">
           {/* Tabs */}
           <div className="flex text-lg border-b border-gray-50">
             <button
               onClick={() => setActiveTab("traveller")}
+              type="button"
               className={`flex-1 flex items-center justify-center gap-2 py-5 font-bold transition-all duration-300 ${
                 activeTab === "traveller"
                   ? "bg-gradient-to-b from-[#FFFBF2] to-white text-[#F2994A]"
@@ -101,6 +127,7 @@ export default function RegisterPage() {
 
             <button
               onClick={() => setActiveTab("agency")}
+              type="button"
               className={`flex-1 flex items-center justify-center gap-2 py-5 font-bold transition-all duration-300 ${
                 activeTab === "agency"
                   ? "bg-gradient-to-b from-[#FFFBF2] to-white text-[#F2994A]"
@@ -124,14 +151,14 @@ export default function RegisterPage() {
               <div className="flex items-center justify-center gap-1 mb-4">
                 <div className="relative flex items-center justify-center w-6 h-6">
                   <span className="text-xl font-bold text-[#F2994A] italic">
-                    365
+                    R
                   </span>
                   <span className="absolute -top-1 -right-1 text-[#F2994A] text-xs">
                     ✨
                   </span>
                 </div>
                 <span className="text-lg font-black tracking-tight text-[#1C1C1C] uppercase">
-                  Roam
+                  ROAMINGREALM
                 </span>
               </div>
               <h1 className="text-3xl font-bold text-[#1C1C1C] mb-2">
@@ -335,6 +362,7 @@ export default function RegisterPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }

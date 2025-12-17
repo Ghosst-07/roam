@@ -4,8 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Eye, EyeOff, User, Building2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useAuth } from "../context/AuthContext"; // Import Auth Context
+import Navbar from "../components/common/Navbar";
+import Footer from "../components/common/Footer";
 
 export default function LoginPage() {
+  const { login } = useAuth(); // Get login function from context
+  const router = useRouter(); // Initialize router for redirection
+
   // --- State Management ---
   const [activeTab, setActiveTab] = useState("traveller");
   const [showPassword, setShowPassword] = useState(false);
@@ -36,9 +43,6 @@ export default function LoginPage() {
     // Basic Email Validation
     if (!formData.email.trim()) {
       newErrors.email = "Username or Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      // Optional: Simple regex for email format if they entered an email
-      newErrors.email = "Please enter a valid email address";
     }
 
     // Password Validation
@@ -59,20 +63,33 @@ export default function LoginPage() {
 
     setIsSubmitting(true);
 
-    // Simulate API call
+    // Simulate API call delay for realism
     setTimeout(() => {
-      console.log("Form submitted successfully:", { activeTab, ...formData });
-      alert(`Login Successful as ${activeTab}! (Check console for data)`);
-      setIsSubmitting(false);
-      // Here you would redirect the user, e.g., router.push('/dashboard')
-    }, 1500);
+      try {
+        // 1. Attempt Login using Context (Checks localStorage)
+        login(formData.email, formData.password);
+
+        // 2. Success Feedback
+        alert(`Login Successful! Welcome back.`);
+
+        // 3. Redirect to Dashboard
+        router.push("/dashboard");
+      } catch (error) {
+        // Handle Invalid Credentials
+        alert(error.message);
+        setErrors({ email: "Invalid credentials", password: " " });
+      } finally {
+        setIsSubmitting(false);
+      }
+    }, 1000);
   };
 
   return (
     <main className="bg-[#FDFDFD] min-h-screen relative overflow-hidden flex flex-col">
-      {/* --- Background Placeholder Images (Replace sources with your actual images) --- */}
+      <Navbar />
+
+      {/* --- Background Placeholder Images --- */}
       <div className="absolute top-0 left-0 w-1/2 h-full pointer-events-none opacity-5 z-0">
-        {/* Placeholder for left topographic pattern */}
         <Image
           src="https://roamingrealm.com/assets/presets/default/images/shape/element-10.png"
           alt="Background Pattern"
@@ -82,7 +99,6 @@ export default function LoginPage() {
         />
       </div>
       <div className="absolute top-0 right-0 w-1/2 h-full pointer-events-none opacity-5 z-0">
-        {/* Placeholder for right topographic pattern */}
         <Image
           src="https://roamingrealm.com/assets/presets/default/images/shape/element-9.png"
           alt="Background Pattern"
@@ -239,7 +255,7 @@ export default function LoginPage() {
             <p className="mt-8 text-gray-600 text-sm">
               Don&apos;t have any account?{" "}
               <Link
-                href="#"
+                href="/register"
                 className="text-[#F2994A] font-bold hover:underline"
               >
                 Create Account
@@ -248,6 +264,7 @@ export default function LoginPage() {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 }
