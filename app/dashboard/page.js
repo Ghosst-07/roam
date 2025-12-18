@@ -429,13 +429,15 @@ export default function DashboardPage() {
       <aside className="w-72 bg-white flex flex-col fixed h-full z-20 overflow-y-auto border-r border-gray-100">
         <div className="p-6 flex items-center gap-2 mb-4">
           <div className="relative flex items-center justify-center w-8 h-8">
-            <span className="text-2xl font-bold text-[#F2994A] italic">R</span>
+            <span className="text-2xl font-bold text-[#F2994A] italic">
+              365
+            </span>
             <span className="absolute -top-1 -right-1 text-[#F2994A] text-xs">
               ✨
             </span>
           </div>
           <span className="text-xl font-black tracking-tight text-[#1C1C1C] uppercase">
-            365Roam
+            Roam
           </span>
         </div>
 
