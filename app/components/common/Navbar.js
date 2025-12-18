@@ -49,7 +49,7 @@ export default function Navbar() {
               </span>
             </div>
             <span className="text-xl lg:text-2xl font-black tracking-tight text-[#1C1C1C] uppercase">
-              ROAMINGREALM
+              365Roam
             </span>
           </Link>
 

@@ -28,10 +28,9 @@ export default function PrivacyPolicyPage() {
             <div className="p-8 lg:p-12">
               {/* Intro Text */}
               <p className="text-gray-700 mb-8 leading-relaxed font-medium">
-                At roamingrealm.com Operated By APEXALIGN PRIVATE LIMITED , we
-                value your trust. This Privacy Policy explains how we collect,
-                use, store, and protect your personal data when you use our
-                Website and travel booking services.
+                At 365Roam.com , we value your trust. This Privacy Policy
+                explains how we collect, use, store, and protect your personal
+                data when you use our Website and travel booking services.
               </p>
 
               {/* --- Section 1 --- */}

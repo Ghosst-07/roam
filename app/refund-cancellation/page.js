@@ -30,10 +30,8 @@ export default function RefundPolicyPage() {
               <p className="text-gray-700 mb-8 leading-relaxed font-medium">
                 This Refund & Cancellation Policy (“Policy”) explains how
                 cancellations, changes, and refunds are handled for bookings
-                made on roamingrealm.com, operated by{" "}
-                <span className="font-bold">APEXALIGN PRIVATE LIMITED</span>{" "}
-                (“we”, “us”, “our”). By booking with us, you agree to this
-                Policy in addition to our Terms of Service.
+                made on 365Roam.com, (“we”, “us”, “our”). By booking with us,
+                you agree to this Policy in addition to our Terms of Service.
               </p>
 
               {/* --- Section 1 --- */}
@@ -379,10 +377,10 @@ export default function RefundPolicyPage() {
                     <Mail size={16} className="text-gray-500" />
                     <span className="font-bold text-gray-900">Email:</span>
                     <a
-                      href="mailto:admin@roamingrealm.com"
+                      href="mailto:admin@365roam.com"
                       className="text-blue-600 hover:underline"
                     >
-                      admin@roamingrealm.com
+                      admin@365roam.com
                     </a>
                   </div>
 

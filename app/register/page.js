@@ -64,10 +64,8 @@ export default function RegisterPage() {
         role: activeTab,
       });
 
-      alert(`Account Created! Welcome ${formData.username}`);
-
-      // 2. Redirect to HOME immediately
-      router.push("/");
+      alert(`Account created successfully! Please sign in.`);
+      router.push("/login");
     } catch (error) {
       alert(error.message);
     } finally {
@@ -158,7 +156,7 @@ export default function RegisterPage() {
                   </span>
                 </div>
                 <span className="text-lg font-black tracking-tight text-[#1C1C1C] uppercase">
-                  ROAMINGREALM
+                  365Roam
                 </span>
               </div>
               <h1 className="text-3xl font-bold text-[#1C1C1C] mb-2">

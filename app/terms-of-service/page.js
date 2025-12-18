@@ -29,8 +29,8 @@ export default function TermsOfServicePage() {
               {/* Intro Text */}
               <p className="text-gray-700 mb-8 leading-relaxed font-medium">
                 This document sets out the Terms of Service (“Terms”) governing
-                the use of roamingrealm.com (the “Website”), owned and operated
-                by APEXALIGN PRIVATE LIMITED (“APEXALIGN PRIVATE LIMITED”, “we”,
+                the use of 365roam.com (the “Website”), owned and operated by
+                APEXALIGN PRIVATE LIMITED (“APEXALIGN PRIVATE LIMITED”, “we”,
                 “our”, or “us”). By accessing the Website, making a booking, or
                 using our services, you (“Customer”, “you”, “your”) agree to
                 these Terms. If you do not agree, please discontinue use
@@ -52,7 +52,7 @@ export default function TermsOfServicePage() {
                         Customer / User:
                       </span>{" "}
                       Any individual or entity accessing or booking via
-                      roamingrealm.com.
+                      365Roam.com.
                     </span>
                   </li>
                   <li className="flex items-start text-gray-700">
@@ -62,7 +62,7 @@ export default function TermsOfServicePage() {
                     <span>
                       <span className="font-bold text-gray-900">Booking:</span>{" "}
                       Reservation for hotels, tours, packages, or travel
-                      services made through roamingrealm.com.
+                      services made through 365roam.com
                     </span>
                   </li>
                   <li className="flex items-start text-gray-700">
@@ -114,7 +114,7 @@ export default function TermsOfServicePage() {
                   2. Scope of Services
                 </h2>
                 <p className="text-gray-700 mb-4 leading-relaxed">
-                  roamingrealm.com enables bookings for:
+                  365roam.com enables bookings for:
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start text-gray-700">
@@ -165,9 +165,8 @@ export default function TermsOfServicePage() {
                       ●
                     </span>
                     <span>
-                      Bookings can be made via roamingrealm.com, APEXALIGN
-                      PRIVATE LIMITED’s official support channels, or authorized
-                      agents.
+                      Bookings can be made via 365roam.com, APEXALIGN PRIVATE
+                      LIMITED’s official support channels, or authorized agents.
                     </span>
                   </li>
                   <li className="flex items-start text-gray-700">
@@ -406,8 +405,8 @@ export default function TermsOfServicePage() {
                       ●
                     </span>
                     <span>
-                      All content on roamingrealm.com (logos, text, software,
-                      images) belongs to APEXALIGN PRIVATE LIMITED or licensors.
+                      All content on 365roam.com (logos, text, software, images)
+                      belongs to APEXALIGN PRIVATE LIMITED or licensors.
                     </span>
                   </li>
                   <li className="flex items-start text-gray-700">
@@ -563,7 +562,7 @@ export default function TermsOfServicePage() {
                     <Mail size={16} className="text-gray-500" />
                     <span className="font-bold text-gray-900">Email:</span>
                     <a
-                      href="mailto:admin@roamingrealm.com"
+                      href="mailto:admin@365roam.com"
                       className="text-blue-600 hover:underline"
                     >
                       admin@365roam.com

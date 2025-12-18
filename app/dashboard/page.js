@@ -435,7 +435,7 @@ export default function DashboardPage() {
             </span>
           </div>
           <span className="text-xl font-black tracking-tight text-[#1C1C1C] uppercase">
-            ROAMINGREALM
+            365Roam
           </span>
         </div>
 

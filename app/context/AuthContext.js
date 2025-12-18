@@ -19,18 +19,25 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
+  // app/context/AuthContext.js
+
   const register = (userData) => {
     const existingUsers = JSON.parse(localStorage.getItem("app_users") || "[]");
-    const userExists = existingUsers.find((u) => u.email === userData.email);
 
+    // Check if email already exists
+    const userExists = existingUsers.find((u) => u.email === userData.email);
     if (userExists) {
       throw new Error("User already exists with this email!");
     }
 
+    // Add new user to "Database" ONLY
     const updatedUsers = [...existingUsers, userData];
     localStorage.setItem("app_users", JSON.stringify(updatedUsers));
-    localStorage.setItem("app_current_user", JSON.stringify(userData));
-    setUser(userData);
+
+    // REMOVED: The auto-login lines (setItem 'app_current_user' and setUser)
+    // localStorage.setItem('app_current_user', JSON.stringify(userData));
+    // setUser(userData);
+
     return true;
   };
 
